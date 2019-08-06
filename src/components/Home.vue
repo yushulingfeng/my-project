@@ -63,12 +63,12 @@
         <div class="mould_2z L">
           <div class="mould_2Ltop">
             <img
-              src="https://static.epetbar.com/static_wap/appmall/main/index_icon_berserk_mark_415.png?version=03"
+              :src="berserkImg"
               alt
               height="16px"
             />
             <div class="text">
-              <span style="color:#fff">16点场</span>
+              <span style="color:#fff" v-text="berserkTit"></span>
               <span
                 style="background:#fff;margin-top:1px;border-top-right-radius:20px;border-bottom-right-radius:20px;"
               >即将开始</span>
@@ -91,7 +91,7 @@
                   </p>
                   <div class="discount">
                     <img
-                      src="https://static.epetbar.com/static_wap/appmall/main/index_icon_berserk_discount.png?version=03"
+                      :src="discount_img"
                       alt
                     />
                   </div>
@@ -202,7 +202,11 @@ export default {
       column_img1: "",
       column_img2: "",
       // 顶部搜索吸附
-      isFixed: false
+      isFixed: false,
+      // 每日疯抢
+      berserkImg:'',
+      berserkTit:'',
+      discount_img:''
     };
   },
   methods: {
@@ -228,10 +232,12 @@ export default {
     this.column_img1 = data.data.datas.list[2].data.column_images[0][0].img_url;
     this.column_img2 = data.data.datas.list[2].data.column_images[1][0].img_url;
 
-    // let goods = await this.$axios(
-    //   "https://www.easy-mock.com/mock/5d47e6b9d7bb1d0fc358c102/menus/goods"
-    // );
-    // console.log(goods.data.data)
+    let goods = await this.$axios(
+      "https://www.easy-mock.com/mock/5d47e6b9d7bb1d0fc358c102/menus/goods"
+    );
+    this.berserkImg = goods.data.data[3760].data.berserk.left.img_url;
+    this.berserkTit = goods.data.data[3760].data.berserk.title;
+    // console.log(goods.data.data[3760].data.berserk.goods)
 
     //  监听滚动事件
     window.addEventListener("scroll", this.handleScroll);
