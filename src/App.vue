@@ -1,16 +1,19 @@
 <template>
   <div id="app">
     <Home />
+    <Tabbar />
   </div>
 </template>
 
 <script>
 import Home from "./components/Home.vue";
+import Tabbar from './components/Tabbar/Tbabar';
 
 export default {
   name: "app",
   components: {
-    Home
+    Home,
+    Tabbar
   }
 };
 </script>
@@ -28,8 +31,5 @@ li {
 #app {
     max-width: 750px;
     margin: auto;
-}
-.van-swipe__indicators {
-  display: none;
 }
 </style>

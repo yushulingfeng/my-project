@@ -1,0 +1,333 @@
+.main_topMenus {
+    width: 100%;
+    min-height: 450px;
+    position: relative;
+    #search_menus {
+        padding: 10px 0px;
+    }
+    .fixed {
+        width: 100%;
+        background: #fff;
+        position: fixed;
+        top: 0px;
+        z-index: 99;
+        .tab li {
+            color: #000;
+        }
+    }
+    .van-search {
+        position: relative;
+        z-index: 9;
+    }
+    .tab ul {
+        display: flex;
+        justify-content: space-around;
+        position: relative;
+        z-index: 9;
+        li {
+            padding: 0px 11px;
+            font-size: 14px;
+            line-height: 44px;
+            text-align: center;
+            color: #fff;
+        }
+        .ft {
+            font-size: 20px;
+            font-weight: 700;
+        }
+    }
+    .banner-menu {
+        width: 100%;
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        .banner {
+            height: 321px;
+        }
+    }
+    .menus {
+        position: relative;
+        top: -30px;
+    }
+    .menus ul {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        li {
+            width: 20%;
+        }
+        img {
+            width: 100%;
+        }
+    }
+}
+
+.boxImg {
+    display: flex;
+    margin-bottom: 10px;
+    img {
+        width: 100%;
+    }
+}
+
+.mould_1 {
+    margin-bottom: 5px;
+}
+
+.mould_2 {
+    box-shadow: 1px 2px 25px 0px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    margin: 0 10px;
+    .mould_2Z {
+        display: flex;
+    }
+    .mould_2z {
+        width: 50%;
+        padding: 15px 0;
+    }
+    .L .mould_2Ltop {
+        display: flex;
+        .text {
+            width: 100%;
+            background: #fb4752;
+            border-radius: 20px;
+            height: 18px;
+            line-height: 16px;
+            font-size: 12px;
+            text-align: center;
+            margin-left: 3px;
+            box-sizing: border-box;
+            span {
+                width: 49.5%;
+                display: inline-block;
+                background-origin: content-box;
+            }
+        }
+    }
+    .mould_2Ltop {
+        .rela {
+            margin: 0px 20px;
+            img {
+                height: 17px;
+            }
+        }
+    }
+    .mould_2Lbottom ul {
+        display: flex;
+        margin-top: 15px;
+        margin-right: 10px;
+        li {
+            width: 50%;
+            position: relative;
+            a {
+                margin-left: 10px;
+                display: block;
+                text-align: center;
+            }
+            img {
+                width: 80%;
+            }
+            p {
+                color: #ff5757;
+                font-size: 10px;
+                text-align: center;
+                span {
+                    font-size: 14px;
+                    font-weight: 700;
+                    margin-left: -5px;
+                }
+                del {
+                    color: #999;
+                }
+            }
+            .discount {
+                position: absolute;
+                top: 0px;
+                right: 0px;
+            }
+            .discount img {
+                width: 26px;
+                height: 18px;
+            }
+        }
+    }
+}
+
+.brand_tit {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 20px;
+    padding-left: 10px;
+    padding-right: 8px;
+    line-height: 19px;
+    color: #333;
+    margin-bottom: 22px;
+    a img {
+        height: 22px;
+    }
+}
+
+.mould_3 {
+    .brand_swipe {
+        padding: 0px 10px;
+        img {
+            width: 100%;
+            border-radius: 15px;
+        }
+        .bottomImg {
+            width: 100%;
+            margin-top: 10px;
+            a {
+                img {
+                    width: 50%;
+                }
+            }
+        }
+    }
+}
+
+.br {
+    width: 100%;
+    border-radius: 15px;
+}
+
+.mould_4,
+.mould_6 {
+    .knowledge_swipe {
+        padding: 0px 10px;
+    }
+    .custom-indicator {
+        position: absolute;
+        right: 30px;
+        bottom: 15px;
+    }
+}
+
+.mould_5 {
+    .dog_food_list {
+        width: 371.667px;
+        height: 165px;
+        margin-right: 15px;
+        margin-right: 15px;
+        padding: 25px 20px;
+        background: #fff;
+        border-radius: 15px;
+        box-shadow: /* 0px 5px 12.5px 0px rgba(0,0,0,0.1)*/
+        1px 2px 25px 0px rgba(0, 0, 0, 0.1);
+        a {
+            position: relative;
+            display: flex;
+            color: #333;
+            img {
+                display: block;
+                width: 110px;
+                height: 110px;
+                margin-right: 10px;
+            }
+            .textline1 {
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                color: #333;
+                font-size: 14px;
+                width: 200px;
+            }
+        }
+        .effect {
+            span {
+                vertical-align: text-top;
+                display: inline-block;
+                background: #41c856;
+                height: 16px;
+                line-height: 13px;
+                border-radius: 20px;
+                padding: 0 6px;
+                margin-right: 2px;
+                em {
+                    font-size: 12px;
+                    color: #fff;
+                }
+            }
+        }
+        .mt5 {
+            font-size: 10px;
+            font-weight: 700;
+            color: #ff5757;
+            margin: 5px;
+            .tip {
+                display: inline-block;
+                vertical-align: text-bottom;
+                font-size: 10px;
+                color: #333;
+                border: 1px solid #333;
+                border-bottom-right-radius: 8px;
+                border-top-left-radius: 8px;
+                padding: 0 5px;
+                margin-left: 5px;
+            }
+        }
+        .superico {
+            position: absolute;
+            top: -25px;
+            left: -10px;
+            img {
+                height: 28px;
+                width: auto;
+            }
+        }
+    }
+    .custom-indicator {
+        position: absolute;
+        right: 50px;
+        bottom: 15px;
+    }
+}
+
+.mould_7 {
+    .column {
+        padding: 0px 10px;
+        box-shadow: 0px 5px 12.5px 0px rgba(0, 0, 0, 0.1);
+        border-radius: 15px;
+        a {
+            display: block;
+            margin-bottom: 20px;
+        }
+    }
+    .goods_list_swiper {
+        width: 109px;
+        a {
+            margin-left: 15px;
+            text-align: center;
+            img {
+                width: 100%;
+            }
+            p {
+                font-size: 10px;
+                color: #ff5757;
+                font-weight: 700;
+                span {
+                    margin-left: -5px;
+                    font-size: 14px;
+                }
+                del {
+                    color: #999;
+                }
+            }
+        }
+    }
+}
+
+.mould_8 {
+    padding-top: 20px;
+    .brand_list {
+        box-shadow: 1px 2px 25px 0px rgba(0, 0, 0, 0.1);
+        border-radius: 15px;
+        padding: 15px;
+        margin: 0px 10px;
+        a {
+            img {
+                width: 100%;
+            }
+        }
+    }
+}

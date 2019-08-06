@@ -9,9 +9,12 @@ import {
     Search,
     Swipe,
     SwipeItem,
-    Lazyload
+    Lazyload,
+    Tabbar,
+    TabbarItem
 } from 'vant';
-Vue.use(Search).use(Swipe).use(SwipeItem).use(Lazyload);
+Vue.use(Search).use(Swipe).use(SwipeItem).use(Lazyload)
+    .use(Tabbar).use(TabbarItem);
 
 Vue.config.productionTip = false
 
