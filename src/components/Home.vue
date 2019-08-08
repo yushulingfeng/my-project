@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div style="margin-bottom:50px">
     <div class="main_topMenus">
       <div id="search_menus" :class="{fixed:isFixed}">
         <van-search
@@ -11,11 +11,11 @@
         />
         <div class="tab">
           <ul>
-            <li class="ft">精选</li>
-            <li>进口狗粮</li>
-            <li>国产狗粮</li>
-            <li>内外驱虫</li>
-            <li>五官护理</li>
+            <li class="ft" @click="go_home">精选</li>
+            <li @click="go_list">进口狗粮</li>
+            <li @click="go_list">国产狗粮</li>
+            <li @click="go_list">内外驱虫</li>
+            <li @click="go_list">五官护理</li>
           </ul>
         </div>
       </div>
@@ -307,7 +307,7 @@
         <van-swipe-item v-for="(item,index) in brand_list" :key="index">
           <div class="brand_list">
             <a>
-              <img :src="item.img_url" alt="">
+              <img :src="item.img_url" alt />
             </a>
           </div>
         </van-swipe-item>
@@ -358,7 +358,7 @@
         <van-swipe-item v-for="(item,index) in goods_imgs" :key="index">
           <div class="brand_list">
             <a>
-              <img :src="item.img_url" alt="">
+              <img :src="item.img_url" alt />
             </a>
           </div>
         </van-swipe-item>
@@ -409,22 +409,26 @@
         <van-swipe-item v-for="(item,index) in life_imgs" :key="index">
           <div class="brand_list">
             <a>
-              <img :src="item.img_url" alt="">
+              <img :src="item.img_url" alt />
             </a>
           </div>
         </van-swipe-item>
       </van-swipe>
     </div>
-    <!-- 会到顶部按钮 -->
+    <!-- 回到顶部按钮 -->
     <div class="back_top" @click="back_top" v-show="bool"></div>
+    <!-- 国产狗粮列表模块 -->
+    <ListC />
   </div>
 </template>
 <script>
+// 国产狗粮列表模块
+import ListC from "@/components/List/List_c";
 export default {
   data() {
     return {
       value: "",
-      bool:false,
+      bool: false,
       //    首页轮播img
       images: [
         "https://img2.epetbar.com/2019-08/01/17/05754ef487f32b44d3e92cbe198b10d8.jpg?x-oss-process=style/water",
@@ -470,19 +474,24 @@ export default {
       // 小萌书
       mould_6Imgs: [],
       mould_7_goods: [],
-      brand_list:[],
-      goods_list:[],
-      goods_imgs:[],
-      life_list:[],
-      life_imgs:[],
+      // 品牌列表
+      brand_list: [],
+      // 健康护理 列表 图片
+      goods_list: [],
+      goods_imgs: [],
+      // 生活日用 列表 图片
+      life_list: [],
+      life_imgs: []
     };
+  },
+  components: {
+    // 国产狗粮列表模块
+    ListC
   },
   methods: {
     // 会到顶部
     back_top() {
-     
-        window.scrollTo(0,0);
-      
+      window.scrollTo(0, 0);
     },
     onChange(index) {
       this.current = index;
@@ -503,15 +512,25 @@ export default {
         this.isFixed = false;
       }
       // 会到顶部按钮的显示隐藏
-      if(scrollY > 300) {
+      if (scrollY > 300) {
         this.bool = true;
-      }else {
+      } else {
         this.bool = false;
       }
+    },
+    go_home() {
+      this.$router.push({
+        name:'home'
+      });
+    },
+    go_list() {
+      this.$router.push({
+        name:'list'
+      });
     }
   },
   //    数据请求
-  async mounted() {
+  async created() {
     //    首页数据请求
     let data = await this.$axios(
       "https://www.easy-mock.com/mock/5d47e6b9d7bb1d0fc358c102/menus/menus"
@@ -555,6 +574,8 @@ export default {
     this.life_list = data.data.datas.list[20].data.goods;
     this.life_imgs = data.data.datas.list[21].data.images;
     // console.log(data.data.datas.list);
+
+    // console.log(datas.data.list);
     //  监听滚动事件
     window.addEventListener("scroll", this.handleScroll);
   }
@@ -562,15 +583,5 @@ export default {
 </script>
 <style lang="scss" scoped>
 @import "../css/home.scss";
-.back_top {
-  position: fixed;
-    right: 10px;
-    bottom: 65px;
-    width: 28px;
-    height: 28px;
-    background: url(../assets/back_top.png);
-    background-size: 100% auto;
-    z-index: 10;
-}
 </style>
 

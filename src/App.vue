@@ -1,24 +1,24 @@
 <template>
   <div id="app">
-    <Home />
+    <!-- <Home /> -->
     <Tabbar />
   </div>
 </template>
 
 <script>
-import Home from "./components/Home.vue";
+// import Home from "./components/Home.vue";
 import Tabbar from './components/Tabbar/Tbabar';
 
 export default {
   name: "app",
   components: {
-    Home,
+    // Home,
     Tabbar
   }
 };
 </script>
 
-<style>
+<style lang="scss" scoped>
 * {
   padding: 0;
   margin: 0;
@@ -32,4 +32,12 @@ li {
     max-width: 750px;
     margin: auto;
 }
+.clearfix:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
 </style>

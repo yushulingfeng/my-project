@@ -1,0 +1,160 @@
+.login_mould {
+    width: 100%;
+    min-height: 207px;
+    background: url(../../assets/backgroundV420.jpg) no-repeat center center;
+    .operation {
+        padding-top: 18px;
+        .left {
+            padding-left: 15px;
+            float: left;
+        }
+        .right {
+            padding-right: 15px;
+            float: right;
+        }
+    }
+    .user_info {
+        margin: 50px 0;
+        padding: 0px 10px;
+        .user_photo {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            overflow: hidden;
+            float: left;
+            a {
+                display: inline-block;
+                img {
+                    width: 70px;
+                    height: 70px;
+                }
+            }
+        }
+        .user_name {
+            margin-left: 80px;
+            padding-top: 25px;
+            span {
+                padding: 0 5px;
+                color: #fff;
+            }
+        }
+    }
+    .vip {
+        padding: 0px 10px;
+        .vipcon {
+            background: #252525;
+            border-radius: 15px 15px 0px 0px;
+            padding: 5px 20px 5px 0px;
+            min-height: 45px;
+            div {
+                width: 25%;
+                float: left;
+                a {
+                    display: block;
+                    text-align: center;
+                    padding: 5px 8px;
+                    img {
+                        width: 100%;
+                        margin-left: 10px;
+                        vertical-align: middle;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.clearfix:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+
+.fl {
+    float: left;
+}
+
+img {
+    vertical-align: middle;
+}
+
+.my_mould {
+    .my_order,
+    .my_wallet,
+    .my_service {
+        padding: 0px 10px;
+        .order,
+        .wallet,
+        .service {
+            box-shadow: 1px 2px 25px 0px rgba(0, 0, 0, 0.1);
+            border-radius: 15px;
+            .tit {
+                padding: 10px 10px 0px 10px;
+                a {
+                    img {
+                        height: 16px;
+                    }
+                }
+            }
+            .item_list {
+                padding-bottom: 10px;
+                margin-top: 20px;
+                div {
+                    width: 20%;
+                    float: left;
+                    a {
+                        padding: 0 8px;
+                        display: block;
+                        text-align: center;
+                        img {
+                            width: 45%;
+                        }
+                        span {
+                            color: #333;
+                            font-size: 12px;
+                            text-overflow: ellipsis;
+                            white-space: nowrap;
+                            overflow: hidden;
+                            margin-top: 5px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .my_wallet {
+        .item_list {
+            #wallet_item {
+                width: 25%;
+                float: left;
+                a {
+                    display: block;
+                    padding: 0 5px;
+                    text-align: center;
+                    p {
+                        font-size: 12px;
+                        margin-top: 5px;
+                        span {
+                            color: #ff5757;
+                            font-size: 14px;
+                            font-weight: 700;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .my_service {
+        .item_list {
+            padding-bottom: 10px;
+            margin-top: 20px;
+            #service_item {
+                width: 25%;
+                float: left;
+                margin: 10px 0px;
+            }
+        }
+    }
+}
