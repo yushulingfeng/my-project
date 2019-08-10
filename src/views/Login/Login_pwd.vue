@@ -7,12 +7,19 @@
         <div class="rela">
           <div class="tel">
             <van-cell-group>
-              <van-field v-model="value" type="tel" placeholder="用户名/手机号/邮箱号" />
+              <van-field v-model="username" type="tel" placeholder="用户名/手机号/邮箱号" />
             </van-cell-group>
             <span class="line"></span>
             <van-cell-group>
-              <van-field v-model="sms" center clearable placeholder="请输入密码">
-                <van-button slot="button" :round="true" plain hairline size="small" type="default">忘记密码</van-button>
+              <van-field v-model="pwd" type="password" center clearable placeholder="请输入密码">
+                <van-button
+                  slot="button"
+                  :round="true"
+                  plain
+                  hairline
+                  size="small"
+                  type="default"
+                >忘记密码</van-button>
               </van-field>
             </van-cell-group>
             <span class="line"></span>
@@ -20,12 +27,12 @@
         </div>
         <!-- 按钮 -->
         <div class="btn">
-            <van-button :disabled="bool" size="large" round type="info">登录</van-button>
+          <van-button :disabled="bool" size="large" round type="info" @click="login_in">登录</van-button>
         </div>
         <!-- 切换登录方式 -->
         <p class="login_tab">
-            <a @click="go_login_tel">短信验证码登录</a>
-            <a>新用户注册</a>
+          <a @click="go_login_tel">短信验证码登录</a>
+          <a>新用户注册</a>
         </p>
       </div>
     </div>
@@ -35,9 +42,9 @@
 export default {
   data() {
     return {
-      value: "",
-      sms:'',
-      bool:true
+      username: "",
+      pwd: "",
+      bool: false
     };
   },
   methods: {
@@ -46,8 +53,26 @@ export default {
     },
     go_login_tel() {
       this.$router.push({
-        name:'login_tel'
+        name: "login_tel"
       });
+    },
+    async login_in() {
+      let res = "";
+      if (this.username && this.pwd) {
+        res = await this.$axios.post("https://elm.cangdu.org/admin/login", {
+          user_name: this.username,
+          password: this.pwd
+        });
+      }
+      if (res.data.status != 0) {
+        this.common.setCookie('username',this.username,7);
+        this.$dialog.alert({
+          message: res.data.success
+        });
+        this.$router.push({
+          name:'mine'
+        });
+      }
     }
   }
 };
@@ -68,14 +93,14 @@ export default {
       margin: 10px 0;
     }
     .btn {
-        margin-top: 37px;
+      margin-top: 37px;
     }
     .login_tab {
-        color: #333;
-        font-size: 12px;
-        margin-top: 15px;
-        display: flex;
-        justify-content: space-between;
+      color: #333;
+      font-size: 12px;
+      margin-top: 15px;
+      display: flex;
+      justify-content: space-between;
     }
   }
 }

@@ -1,7 +1,7 @@
 <template>
   <div>
     <div :class="{fixed:isFixed}">
-      <van-nav-bar title="商品列表" left-text left-arrow>
+      <van-nav-bar title="商品列表" left-text left-arrow @click-left="onClickLeft">
         <van-icon name="more-o" :size="26" color="#999" slot="right" />
       </van-nav-bar>
     </div>
@@ -20,7 +20,7 @@
                   v-for="(item,index) in goods_list"
                   :key="index"
                   :data-id="item.gid"
-                  @click="go_detail(item.gid)"
+                  @click="go_detail(item.gid,)"
                 >
                   <van-card
                     :price="item.sale_price"
@@ -70,7 +70,8 @@ export default {
         { text: "最新上架", value: 2 },
         { text: "按评论", value: 3 }
       ],
-      goods_list: []
+      goods_list: [],
+      gid:''
     };
   },
   async created() {
@@ -109,6 +110,13 @@ export default {
         this.goods_list = data.data.list;
       }
     },
+    go_detail(id) {
+      this.gid = id;
+      this.$store.commit('setGid',id);
+      this.$router.push({
+        name:'detail'
+      });
+    },
     // 回到顶部
     back_top() {
       window.scrollTo(0, 0);
@@ -126,7 +134,12 @@ export default {
       } else {
         this.bool = false;
       }
-    }
+    },
+    onClickLeft() {
+      this.$router.push({
+        name:'home'
+      });
+    },
   },
   mounted() {
     this.go(this.value1);

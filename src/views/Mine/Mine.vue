@@ -21,11 +21,11 @@
         </div>
         <div class="user_name">
           <a @click="goLogin">
-            <span>登录</span>
+            <span v-text="msg"></span>
           </a>
-          <span>|</span>
+          <span v-show="bool">|</span>
           <a>
-            <span @click="goReg">注册</span>
+            <span @click="goReg" v-show="bool">注册</span>
           </a>
         </div>
       </div>
@@ -122,7 +122,9 @@ export default {
       // service
       serviceTit: "",
       serviceImg: "",
-      serviceItem: []
+      serviceItem: [],
+      msg:'登录',
+      bool:true
     };
   },
   methods: {
@@ -156,6 +158,16 @@ export default {
     this.serviceTit = data.data.list[3].type_name;
     this.serviceImg = data.data.list[3].header.left_image.img_url;
     // console.log(data.data.list[1])
+  },
+  mounted() {
+    let name = this.common.getCookie('username');
+    if(name) {
+      this.msg = name;
+      this.bool = false;
+    }else {
+      this.msg = '登录';
+      this.bool = true;
+    }
   }
 };
 </script>
