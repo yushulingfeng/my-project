@@ -132,25 +132,32 @@ export default {
       this.$router.go(-1);
     },
     goLogin() {
-      this.$router.push({
-        name: "login_pwd"
-      });
+      if (this.msg == "登录") {
+        this.$router.push({
+          name: "login_pwd"
+        });
+      }
     },
     goReg() {
       if (this.reg == "注册") {
         this.$router.push({
           name: "reg"
         });
-      }else {
-        this.$dialog.confirm({
-        title: "退出登录",
-        message: "您确定要退出登录吗？"
-      }).then(() => {
-          this.common.delCookie("username");
-          location.reload();
-        }).catch(() => {
-          // on cancel
-        });
+      } else {
+        this.$dialog
+          .confirm({
+            title: "退出登录",
+            message: "您确定要退出登录吗？"
+          })
+          .then(() => {
+            this.common.delCookie("username");
+            this.$router.push({
+              name:'mine'
+            });
+          })
+          .catch(() => {
+            // on cancel
+          });
       }
     }
   },
