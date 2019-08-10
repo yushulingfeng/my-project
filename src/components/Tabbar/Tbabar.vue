@@ -1,9 +1,9 @@
 <template>
   <div>
     <!-- 路由视图 -->
-    <keep-alive>
+    <!-- <keep-alive> -->
       <router-view></router-view>
-    </keep-alive>
+    <!-- </keep-alive> -->
   <!-- 底部标签固定 -->
     <van-tabbar v-model="active">
       <van-tabbar-item

@@ -205,6 +205,12 @@ export default {
     let data1 = await this.$axios('https://www.easy-mock.com/mock/5d47e6b9d7bb1d0fc358c102/menus/'+this.gid)
     this.detail = data1.data.list;
   },
+  mounted() {
+    let num = this.common.getCookie('buyNum');
+    if(num) {
+      this.info = num;
+    }
+  }
   
 };
 </script>

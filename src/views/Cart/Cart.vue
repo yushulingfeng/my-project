@@ -14,12 +14,9 @@
     </div>
     <div class="card" v-for="(item,index) in cart_list" :key="index">
       <van-checkbox v-model="checked"></van-checkbox>
-      <van-card
-        :price="item.sale_price"
-        :title="item.subject"
-        :thumb="item.photo"
-      />
+      <van-card :price="item.sale_price" :title="item.subject" :thumb="item.photo" />
       <div class="buy_num">
+        <van-button type="danger" size="mini" @click="del">删除</van-button>
         <van-stepper v-model="value" :min="1" :max="10" integer />
       </div>
     </div>
@@ -42,8 +39,8 @@ export default {
       bool: true,
       checked: true,
       value: 1,
-      cart_list:[],
-      price:0
+      cart_list: [],
+      price: 0
     };
   },
   methods: {
@@ -57,13 +54,27 @@ export default {
       });
     },
     async getData(gid) {
-      let data = await this.$axios('https://www.easy-mock.com/mock/5d47e6b9d7bb1d0fc358c102/menus/'+gid);
+      let data = await this.$axios(
+        "https://www.easy-mock.com/mock/5d47e6b9d7bb1d0fc358c102/menus/" + gid
+      );
       this.cart_list = data.data.list;
+    },
+    del() {
+      this.$dialog.confirm({
+        title: "移除商品",
+        message: "您确定要删除此商品吗？"
+      }).then(() => {
+          this.common.delCookie("gid");
+          this.common.delCookie("buyNum");
+          location.reload();
+        }).catch(() => {
+          // on cancel
+        });
     }
   },
   created() {
     let id = this.common.getCookie("gid");
-    let num = this.common.getCookie('buyNum');
+    let num = this.common.getCookie("buyNum");
     this.value = num;
     if (id) {
       this.bool = !this.bool;
@@ -75,23 +86,25 @@ export default {
 <style lang="scss" scoped>
 @import "@/css/cart.scss";
 .card {
-    margin-top: 46px;
-    display: flex;
-    justify-content: space-around;
-    position: relative;
-    .van-checkbox {
-        width: 8%;
-        padding-left: 10px;
+  margin-top: 46px;
+  display: flex;
+  justify-content: space-around;
+  position: relative;
+  .van-checkbox {
+    width: 8%;
+    padding-left: 10px;
+  }
+  .buy_num {
+    text-align: center;
+    padding-top: 20px;
+    position: absolute;
+    right: 15px;
+    top: 20px;
+    .van-stepper {
+      border: 1px solid #333;
+      border-radius: 5px;
+      margin-top: 10px;
     }
-    .buy_num {
-        padding-top: 50px;
-        position: absolute;
-        right: 15px;
-        top: 20px;
-        .van-stepper {
-            border: 1px solid #333;
-            border-radius: 5px;
-        }
-    }
+  }
 }
 </style>

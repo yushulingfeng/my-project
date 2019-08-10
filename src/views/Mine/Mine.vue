@@ -23,9 +23,9 @@
           <a @click="goLogin">
             <span v-text="msg"></span>
           </a>
-          <span v-show="bool">|</span>
+          <span>|</span>
           <a>
-            <span @click="goReg" v-show="bool">注册</span>
+            <span @click="goReg" v-text="reg"></span>
           </a>
         </div>
       </div>
@@ -123,8 +123,8 @@ export default {
       serviceTit: "",
       serviceImg: "",
       serviceItem: [],
-      msg:'登录',
-      bool:true
+      msg: "登录",
+      reg: "注册"
     };
   },
   methods: {
@@ -133,15 +133,26 @@ export default {
     },
     goLogin() {
       this.$router.push({
-        name:'login_tel'
+        name: "login_pwd"
       });
     },
     goReg() {
-      this.$router.push({
-        name:'reg'
-      });
+      if (this.reg == "注册") {
+        this.$router.push({
+          name: "reg"
+        });
+      }else {
+        this.$dialog.confirm({
+        title: "退出登录",
+        message: "您确定要退出登录吗？"
+      }).then(() => {
+          this.common.delCookie("username");
+          location.reload();
+        }).catch(() => {
+          // on cancel
+        });
+      }
     }
-
   },
   async created() {
     let data = await this.$axios(
@@ -160,17 +171,17 @@ export default {
     // console.log(data.data.list[1])
   },
   mounted() {
-    let name = this.common.getCookie('username');
-    if(name) {
+    let name = this.common.getCookie("username");
+    if (name) {
       this.msg = name;
-      this.bool = false;
-    }else {
-      this.msg = '登录';
-      this.bool = true;
+      this.reg = "退出登录";
+    } else {
+      this.msg = "登录";
+      this.reg = "注册";
     }
   }
 };
 </script>
 <style lang="scss" scoped>
-@import '@/css/mine.scss';
+@import "@/css/mine.scss";
 </style>
