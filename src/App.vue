@@ -1,19 +1,19 @@
 <template>
   <div id="app">
-    <Home />
-    <!-- <Tabbar /> -->
+    <!-- <Home /> -->
+    <Tabbar />
   </div>
 </template>
 
 <script>
-import Home from "@/views/Home/Home";
-// import Tabbar from './components/Tabbar/Tbabar';
+// import Home from "@/components/Home";
+import Tabbar from './components/Tabbar/Tbabar';
 
 export default {
   name: "app",
   components: {
-    Home,
-    // Tabbar
+    // Home,
+    Tabbar
   }
 };
 </script>

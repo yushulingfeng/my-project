@@ -154,6 +154,7 @@ export default {
             this.$router.push({
               name:'mine'
             });
+            location.reload();
           })
           .catch(() => {
             // on cancel
