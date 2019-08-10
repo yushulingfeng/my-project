@@ -25,7 +25,7 @@
       <div class="right_lis" v-for="(item,index) in right_List1" :key="index">
         <a class="tit" v-text="item.title"></a>
         <ul>
-          <li v-for="(lis,index) in item.list" :key="index" :data-id="item.id_param">
+          <li v-for="(lis,index) in item.list" :key="index" :data-id="item.id_param" @click="go_list">
             <img :src="lis.photo" alt />
             <p v-text="lis.name"></p>
           </li>
@@ -61,6 +61,11 @@ export default {
         "https://www.easy-mock.com/mock/5d47e6b9d7bb1d0fc358c102/menus/" + id
       );
       this.right_List1 = data1.data.cate_list;
+    },
+    go_list() {
+      this.$router.push({
+        name:'list'
+      });
     }
   },
   async created() {
