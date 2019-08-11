@@ -165,6 +165,7 @@
   </div>
 </template>
 <script>
+import handleCookie from "@/util/cookie/handleCookie"
 export default {
   data() {
     return {
@@ -190,9 +191,14 @@ export default {
       });
     },
     onClickButton() {
-      this.info += this.value;
-      this.common.setCookie('gid',this.gid,1);
-      this.common.setCookie('buyNum',this.info,1)
+      this.info = this.info * 1 + this.value * 1;
+      // const prev = this.common.getCookie('gid')
+      handleCookie.goods(
+        "ADD",{
+          gid:this.gid,
+          buyNum:this.info
+        }
+      )
     },
     onChange(index) {
       this.current = index;
@@ -206,7 +212,13 @@ export default {
     this.detail = data1.data.list;
   },
   mounted() {
-    let num = this.common.getCookie('buyNum');
+    const goods = handleCookie.goods("SELECT",{
+      type:"ALL"
+    });
+    let num = '';
+    for(let item of goods) {
+      num += item.buyNum;
+    }
     if(num) {
       this.info = num;
     }

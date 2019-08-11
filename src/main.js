@@ -3,6 +3,7 @@ import App from './App.vue'
 import axios from 'axios'
 import router from '@/router/router'
 import store from '@/vuex/store'
+import Cookies from "js-cookie"
 // 引入vant组件
 import Vant from '@/vant/index'
 Vant();
@@ -16,7 +17,7 @@ Vue.use(Dialog);
 Vue.prototype.$axios = axios;
 Vue.prototype.common = Common;
 
-
+window.Cookies = Cookies
 
 
 Vue.config.productionTip = false
